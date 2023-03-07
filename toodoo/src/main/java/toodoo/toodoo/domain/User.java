@@ -1,6 +1,8 @@
 package toodoo.toodoo.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,6 +18,7 @@ public class User {
 	private Long id;
 	private String username;
 	private String password;
+	private List<TooDoo> toodoolist = new ArrayList<>();
 	private Set<Authorities> authorities = new HashSet<>();
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="user")
@@ -44,4 +47,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@OneToMany(mappedBy="user")
+	public List<TooDoo> getToodoolist() {
+		return toodoolist;
+	}
+	public void setToodoolist(List<TooDoo> toodoolist) {
+		this.toodoolist = toodoolist;
+	}
+	
 }

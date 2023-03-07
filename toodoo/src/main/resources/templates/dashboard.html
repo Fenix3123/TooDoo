@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 	<head>
 		<title>Dashboard</title>
 	</head>
@@ -7,6 +7,18 @@
 	<body>
 		<p> Pls work </p>
 		<p th:text="|${user.username}|"></p>
+		
+		<div th:each="entity : ${toodoolist}">
+                <span th:text="${entity.item}"></td>
+        </div>
+		
+		<form method="post" action="/dashboard">
+			<input type ="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+			<div>
+				toodoo item: <input type="text" th:field="${toodoo.item}" />
+			</div>
+			<button type="submit">Enter</button>
+		</form>
 		
 		<form method="post" action="/logout">
 			<input type ="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
