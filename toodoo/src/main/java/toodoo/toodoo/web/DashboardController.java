@@ -24,10 +24,8 @@ public class DashboardController {
 	public String getDashboard(ModelMap model, @AuthenticationPrincipal User user) {
 		model.put("user", user);
 		model.put("toodoo", new TooDoo());
+		user = userService.findById(user.getId());
 		List<TooDoo> toodooList = user.getToodoolist();
-		for(TooDoo str: toodooList) {
-			System.out.println(str.getItem());
-		}
 		model.addAttribute("toodoolist", toodooList);
 		return "dashboard";
 	}

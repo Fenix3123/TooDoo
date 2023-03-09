@@ -14,5 +14,13 @@ public class TooDooService {
 	public TooDoo saveTooDoo(TooDoo toodoo) {
 		return toodoorepo.save(toodoo);
 	}
+	
+	public TooDoo getById(Long id) {
+		return toodoorepo.getById(id);
+	}
+	
+	public void delete(TooDoo toodoo) {
+		toodoorepo.delete(toodoo);
+	}
 
 }

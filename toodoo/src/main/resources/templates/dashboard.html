@@ -9,7 +9,7 @@
 		<p th:text="|${user.username}|"></p>
 		
 		<div th:each="entity : ${toodoolist}">
-                <span th:text="${entity.item}"></td>
+                <a th:href="@{/toodoo/{toodooid}(toodooid=${entity.toodooid})}">[[${entity.item}]]</a>
         </div>
 		
 		<form method="post" action="/dashboard">

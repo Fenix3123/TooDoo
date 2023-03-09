@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>toodoo</title>
+	</head>
+	
+	<body>
+		<h1>edit toodoo here</h1>
+		<p th:text="|${toodooobj.item}|"></p>
+		<p th:text="|${toodooobj.toodooid}|"></p>
+		<form action="" method="post">
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+			<div>
+				TooDoo: <input type="text" th:field="${toodooobj.item}" />
+			</div>
+		
+			<div>
+				<input type="submit" value="Change toodooitem" />
+			</div>
+		</form>
+		<form th:action="@{/toodoo/delete/{id}(id=${toodooobj.toodooid})}" method="post">
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+				<button type="submit">delete item</button>
+		</form>
+		<a th:href="@{/dashboard}">Go back to dashboard</a>
+	</body>
+</html>
