@@ -1,28 +1,56 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" lang="en">
 	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="/css/bootstrap.css">
 		<title>Dashboard</title>
 	</head>
 	
 	<body>
-		<p> Pls work </p>
-		<p th:text="|${user.username}|"></p>
-		
-		<div th:each="entity : ${toodoolist}">
-                <a th:href="@{/toodoo/{toodooid}(toodooid=${entity.toodooid})}">[[${entity.item}]]</a>
-        </div>
-		
-		<form method="post" action="/dashboard">
-			<input type ="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-			<div>
-				toodoo item: <input type="text" th:field="${toodoo.item}" />
+		<div class="container border">
+		<!--Start of container-->
+			<div class="row">
+			<!--row 1-->
+				<div class="col">
+					<h1>TooDoo</h1>
+				</div>
+				<div class="col">
+					Welcome [[${user.username}]]
+					<br>
+					<a th:href="@{/userView}">Click to change user info</a>
+				</div>
 			</div>
-			<button type="submit">Enter</button>
-		</form>
-		
-		<form method="post" action="/logout">
-			<input type ="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-			<button type="submit">Logout</button>
-		</form>
+			
+			<div class="row">
+			<!--row2-->
+				<div class="col">
+					<h5>Your List!:</h5>
+					<div th:each="entity : ${toodoolist}">
+	                	<a th:href="@{/toodoo/{toodooid}(toodooid=${entity.toodooid})}">[[${entity.item}]]</a>
+	        		</div>
+	        		<form method="post" action="/dashboard">
+						<input type ="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+							<div>
+								toodoo item: <input type="text" th:field="${toodoo.item}" />
+							</div>
+						<button type="submit" class="btn btn-secondary">Enter</button>
+					</form>
+					
+				</div>
+				
+			</div>
+			
+			<div class="row">
+			<!--row3-->
+				<form method="post" action="/logout">
+					<input type ="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+					<button type="submit" class="btn btn-secondary">Logout</button>
+				</form>
+			</div>
+		<!--end of container-->
+		</div>
+	<script src="/js/bootstrap.js"></script>
+	
 	</body>
 </html>

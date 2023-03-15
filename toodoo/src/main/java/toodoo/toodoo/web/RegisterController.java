@@ -38,6 +38,6 @@ public class RegisterController {
 		authorities.setAuthority("ROLE_USER");
 		authorities.setUser(user);
 		authoritiesService.saveAuthorities(authorities);
-		return "redirect:/register";
+		return "redirect:/logout";
 	}
 }

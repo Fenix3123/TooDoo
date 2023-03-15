@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" lang="en">
 	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="/css/bootstrap.css">
 		<title>Login</title>
 	</head>
 	
 	<body>
+		
 		<form action="/login" method="post">
 			<input type ="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 		    <fieldset>
@@ -38,6 +42,6 @@
 		    </fieldset>
  		</form>
  		<a href="/register">Register account</a>
-
+	<script src="/js/bootstrap.js"></script>
 	</body>
 </html>
